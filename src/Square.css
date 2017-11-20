@@ -1,0 +1,9 @@
+
+.square {
+  width: 75px;
+  height: 75px;
+  background: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

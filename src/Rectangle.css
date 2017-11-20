@@ -1,0 +1,58 @@
+
+.rectangle {
+  width: 30px;
+  height: 90px;
+  position: absolute;
+
+}
+
+.top-red{
+  background-color: red;
+  top: 15px;
+  left: 15px;
+}
+
+
+.top-blue{
+  background-color: blue;
+  right: 15px;
+  top: 15px;
+}
+
+.top-green {
+  background-color: green;
+  right: 15px;
+  bottom: 15px;
+}
+
+.top-white {
+  background-color: white;
+  left: 15px;
+  bottom: 15px;
+}
+
+.top-blue-first {
+
+  background-color: blue;
+  top: 15px;
+  left: 15px;
+}
+.top-red-first {
+
+  background-color: red;
+  top: 15px;
+  right: 15px;
+}
+
+.top-green-first {
+
+  background-color: green;
+  bottom: 15px;
+  left: 15px;
+}
+.top-white-first {
+
+  background-color: white;
+  bottom: 15px;
+  right: 15px;
+}

@@ -3,49 +3,51 @@ import './App.css';
 
 import { DragDropContextProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
-import Dustbin from './Dustbin'
-import Box from './Box'
+import Square from './Square'
 import Portal from './Portal'
-import Card from './Card'
+import Rectangle from './Rectangle'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      portal: 'TEST'
+      mainSquare: true,
+      portalSquare: false
     }
   }
   render() {
     return (
       <div className='container'>
-        TEST
-        <DragDropContextProvider backend={HTML5Backend}>
-  				<div>
-  					<div style={{ overflow: 'hidden', clear: 'both' }}>
-  						<Dustbin />
-  					</div>
-  					<div style={{ overflow: 'hidden', clear: 'both' }}>
-  						<Box name="Glass" publisher={(component) => this.handlePublish(component)} clicked={() => this.handleBoxClick()}/>
-  						<Box name="Banana" publisher={(component) => this.handlePublish(component)} clicked={() => this.handleBoxClick()}/>
-  						<Box name="Paper" publisher={(component) => this.handlePublish(component)} clicked={() => this.handleBoxClick()}/>
-  					</div>
-  				</div>
-  			</DragDropContextProvider>
-        <Portal portal={this.state.portal}>
-        KALOQN
-        </Portal>
+      <DragDropContextProvider backend={HTML5Backend}>
+        <div>
+          <Rectangle className='top-blue-first rectangle' />
+          <Rectangle className='top-red-first rectangle' />
+          {this.state.mainSquare ? <Square handleDrag={() => this.handleDrag()} name='Drag me' /> : null}
+          <Rectangle className='top-green-first rectangle' />
+          <Rectangle className='top-white-first rectangle' />
+          <Portal portal={this.state.portal}>
+            <div className='container'>
+            <Rectangle className='top-red rectangle' />
+            <Rectangle className='top-blue rectangle' />
+            {this.state.portalSquare ? <Square handleDrag={() => this.handleDrag()} name='Drag me' /> : null}
+            <Rectangle className='top-white rectangle' />
+            <Rectangle className='top-green rectangle' />
+            </div>
+          </Portal>
+        </div>
+        </DragDropContextProvider>
       </div>
     );
   }
-  handlePublish(component) {
+
+  handleDrag() {
+    console.log('HERE')
     this.setState(state => {
       return {
-        portal: component
+        mainSquare: false,
+        portalSquare: true
       }
     })
-  }
-  handleBoxClick() {
-    console.log('BOX CLICKED')
   }
 }
 
